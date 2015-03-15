@@ -35,13 +35,14 @@ int *algoritmoFuerzaBruta(int X0, int Y0, int X1, int Y1){
 	m = (long double)((long double)(Y1 - Y0) / (long double)(X1 - X0));
 	b = (long double) (Y0 - (long double)(m * X0));
 	
-	for(i=X0; i<=X1; i++){
-		if(X0 > X1 ){ //se mantiene el orden X0 siempre mas grande
-			ordenX0 = X0;
-			ordenX1 = X1;
-			X0 = ordenX1;
-			X1 = ordenX0;
+	if(X0 > X1 ){ //se mantiene el orden X0 siempre mas grande
+		ordenX0 = X0;
+		ordenX1 = X1;
+		X0 = ordenX1;
+		X1 = ordenX0;
 			}
+			
+	for(i=X0; i<=X1; i++){
 		y = (long double)(((long double)(m * i)) + b);
 		printPoint(i,(int) lroundl(y));
 		/*plot(i, round(y))*/
