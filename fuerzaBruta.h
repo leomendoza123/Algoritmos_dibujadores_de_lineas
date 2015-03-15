@@ -1,0 +1,7 @@
+#ifndef FUERZABRUTA_H
+#define FUERZABRUTA_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int *algoritmoFuerzaBruta(int X0, int Y0, int X1, int Y1);
+#endif /*FTTP_H*/
