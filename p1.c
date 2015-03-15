@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 	if(!strcmp(argv[1],"h")){
 		printLabelEncabezado();
 		printLabelInfo1();
-		algoritmoIncrementalDoble(5, 4, 23, 11);
+		algoritmoIncrementalDobleSinPlot(5, 4, 23, 11);
 		return 0;
 		}
 
