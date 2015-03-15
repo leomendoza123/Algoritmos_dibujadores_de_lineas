@@ -33,7 +33,11 @@ int *algoritmoIncremental(int X0, int Y0, int X1, int Y1){
 
 	for(i=Y0;i<=Y1;i++){
 		x += (long double)((long double)1 /(long double) m);
+<<<<<<< HEAD
 		//printPoint(lroundl(x),i);
+=======
+		printPoint(lroundl(x),i);
+>>>>>>> 763a320c405ffb6170ed532f5ef855ab3180e093
 		plot(lroundl(x),i);
 		}
 
@@ -58,9 +62,15 @@ int *algoritmoIncremental(int X0, int Y0, int X1, int Y1){
 
 	m = ((long double)(Y1 - Y0) / (long double)(X1 - X0));
 	y = (long double)Y0;
+<<<<<<< HEAD
 
 	for(i=X0;i<=X1;i++){
 		//printPoint(i,lroundl(y));
+=======
+				
+	for(i=X0;i<=X1;i++){	
+		printPoint(i,lroundl(y));
+>>>>>>> 763a320c405ffb6170ed532f5ef855ab3180e093
 		plot(i,lroundl(y));
 		y+=m;
 		}

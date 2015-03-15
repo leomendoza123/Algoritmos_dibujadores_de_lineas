@@ -15,10 +15,16 @@ int *algoritmoFuerzaBruta(int X0, int Y0, int X1, int Y1){
 	//Caso 0
 	//Caso en el cual ambas puntos son iguales X0 = X1 y Y0 = Y1
 	if(X0 == X1 && Y0 == Y1){
+<<<<<<< HEAD
 		//printPoint(X0,Y0);
 		plot(X0,Y0);
         diff = clock() - start;
         return diff;
+=======
+		printPoint(X0,Y0);
+		plot(X0,Y0);
+		return 1;
+>>>>>>> 763a320c405ffb6170ed532f5ef855ab3180e093
 		}
 
 	//Caso 1
@@ -31,9 +37,14 @@ int *algoritmoFuerzaBruta(int X0, int Y0, int X1, int Y1){
 			Y1 = ordenY0;
 			}
 	for(i=Y0; i<=Y1; i++){
+<<<<<<< HEAD
 		//printPoint(X0,i);
 		plot(X0,i);
 
+=======
+		printPoint(X0,i);
+		plot(X0,i);
+>>>>>>> 763a320c405ffb6170ed532f5ef855ab3180e093
 		}
 	  diff = clock() - start;
       return diff;
@@ -64,7 +75,7 @@ int *algoritmoFuerzaBruta(int X0, int Y0, int X1, int Y1){
 	for(i=Y0;i<=Y1;i++){
 		x = (long double)((long double)(i - b) / (long double)m);
 		printPoint(lroundl(x),i);
-		/*plot(i,round(y))*/
+		plot(lroundl(x),i);
 		}
 
         diff = clock() - start;
@@ -89,9 +100,14 @@ int *algoritmoFuerzaBruta(int X0, int Y0, int X1, int Y1){
 
 	for(i=X0; i<=X1; i++){
 		y = (long double)(((long double)(m * i)) + b);
+<<<<<<< HEAD
 		//printPoint(i,(int) lroundl(y));
 		plot(i,(int) lroundl(y));
 
+=======
+		printPoint(i,(int) lroundl(y));
+		plot(i,lroundl(y));
+>>>>>>> 763a320c405ffb6170ed532f5ef855ab3180e093
 		}
         diff = clock() - start;
         return diff;
