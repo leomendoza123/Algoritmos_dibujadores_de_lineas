@@ -21,7 +21,8 @@ int main(int argc, char** argv)
 
     algoritmoIncremental(5, 4, 600, 100);
     algoritmoFuerzaBruta(5, 4, 100, 600);
-     algoritmoIncrementalDoble(5, 4, 100, 800);
+    algoritmoIncrementalDoble(5, 4, 100, 800);
+    algoritmoBresemham(5, 4, 100, 900);
 
 
     draw ();

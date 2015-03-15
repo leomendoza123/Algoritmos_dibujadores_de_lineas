@@ -1,4 +1,4 @@
-OBJECTS=mesa.o fuerzaBruta.c incremental.c incrementalDoble.c print.c utiles.c
+OBJECTS=mesa.o fuerzaBruta.c incremental.c incrementalDoble.c print.c utiles.c bresemham.c
 OUTPUT=mesa
 
 CFLAGS=-I/usr/local/Mesa-3.4/include
