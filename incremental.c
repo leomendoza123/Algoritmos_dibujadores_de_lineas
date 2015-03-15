@@ -32,7 +32,7 @@ int *algoritmoIncremental(int X0, int Y0, int X1, int Y1){
 	for(i=Y0;i<=Y1;i++){	 
 		x += (long double)((long double)1 /(long double) m);
 		printPoint(lroundl(x),i);
-		/*plot(i,round(y))*/
+		plot(lroundl(x),i);
 		}
 					
 		return 1;
@@ -57,7 +57,7 @@ int *algoritmoIncremental(int X0, int Y0, int X1, int Y1){
 				
 	for(i=X0;i<=X1;i++){	
 		printPoint(i,lroundl(y));
-		/*plot(i,round(y))*/
+		plot(i,lroundl(y));
 		y+=m;
 		}
 		
