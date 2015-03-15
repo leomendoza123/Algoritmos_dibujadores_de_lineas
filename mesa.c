@@ -45,9 +45,9 @@ int main(int argc, char* argv[])
     while (n++<lineas){
 
         plotCheckerReset();
-       // IncrementalTime += algoritmoIncremental( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+       IncrementalTime += algoritmoIncremental( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
         plotCheckerReset();
-        FuerzaBrutaTime += algoritmoFuerzaBruta( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+      //  FuerzaBrutaTime += algoritmoFuerzaBruta( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
         plotCheckerReset();
       //  IncrementalDobleTime += algoritmoIncrementalDoble( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
         plotCheckerReset();
