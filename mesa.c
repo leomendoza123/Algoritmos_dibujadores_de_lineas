@@ -9,29 +9,106 @@
 
 #include "mesa.h"
 #include "malloc.h"
+#include <time.h>
 
 void test ();
+int asar (void);
 
 COLOR **buffer;
 
-int main(int argc, char** argv)
+int random_number(int min_num, int max_num);
+int h_size, v_size;
+void plotCheckerReset();
+void plotCheckerON(int x);
+void plotChecker(int i, int j);
+
+
+int main(int argc, char* argv[])
 {
+    int size =  atoi(argv[1]);
+    int times = atoi(argv[2]);
+    int lineas = atoi(argv[3]);
+
+    printf("Tamaño %i, Repeticiones %i, Lineas %i \n", size, times, lineas);
+
+     h_size =size;
+     v_size =size;
     glutInit(&argc, argv);
     init ();
+    int n= 0;
+    srand(time(NULL));
+    plotCheckerON(1);
+    int BresemhamTime = 0;
+    int IncrementalDobleTime = 0;
+    int FuerzaBrutaTime = 0;
+    int IncrementalTime = 0;
+    while (n++<lineas){
 
-    algoritmoIncremental(5, 4, 600, 100);
-    algoritmoFuerzaBruta(5, 4, 100, 600);
-    algoritmoIncrementalDoble(5, 4, 100, 800);
-    algoritmoBresemham(5, 4, 100, 900);
+        plotCheckerReset();
+       // IncrementalTime += algoritmoIncremental( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+        plotCheckerReset();
+        FuerzaBrutaTime += algoritmoFuerzaBruta( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+        plotCheckerReset();
+      //  IncrementalDobleTime += algoritmoIncrementalDoble( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+        plotCheckerReset();
+     //  BresemhamTime += algoritmoBresemham( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+        }
 
-
+    printf (">> \n" );
+    printf ("Incremental Doble time %i \n",IncrementalDobleTime );
+    printf ("Fuerza Bruta time %i \n",FuerzaBrutaTime );
+    printf ("Incremental time %i \n",IncrementalTime );
+    printf ("Bresemham time %i \n",BresemhamTime );
     draw ();
 
+
+
+}
+int asar (){
+    srand(time(NULL));
+    int r = rand();
+}
+
+
+int Xchecker =0;
+int Ychecker = 0;
+int checkerBeging =0;
+int checkerOn= 0;
+
+void plotCheckerReset(){
+    Xchecker = 0;
+    Ychecker = 0;
+    checkerBeging = 0;
+}
+
+void plotCheckerON(int x){
+    checkerOn = x;
+}
+
+void plotChecker(int i, int j){
+
+    if (checkerOn){
+
+        if (!checkerBeging){
+            Xchecker = i;
+            Ychecker = j;
+            checkerBeging = 1;
+        }
+        else{
+            if (abs(Xchecker-i)>2 || abs(Ychecker-j)>2){
+                printf ("posible error en dibujado del punto X:%i, Y:%i al X2:%i, Y2:%i \n",Xchecker, Ychecker, i, j);
+            }
+            Xchecker = i;
+            Ychecker = j;
+        }
+    }
 }
 
 void plot (i,j){
 
-    if (i>=0&&i<H_SIZE  &&   j>=0&&j< V_SIZE ){
+    plotChecker(i,j);
+
+    if (i>=0&&i<h_size  &&   j>=0&&j< v_size ){
         buffer[i][j].r = 1;
         buffer[i][j].g = 1;
         buffer[i][j].b = 1;
@@ -41,9 +118,9 @@ void plot (i,j){
 
 void test (){
 int i,j;
-  for (i = 0; i < H_SIZE; i++)
+  for (i = 0; i < h_size; i++)
       {
-       for (j = 0; j < V_SIZE; j++){
+       for (j = 0; j < v_size; j++){
 
        if (i=j){
 
@@ -58,15 +135,15 @@ int i,j;
 void init (){
   int i, j;
 
-  buffer = (COLOR **)malloc(H_SIZE * sizeof(COLOR*));
-  for (i = 0; i < H_SIZE; i++)
+  buffer = (COLOR **)malloc(h_size * sizeof(COLOR*));
+  for (i = 0; i < h_size; i++)
       {
-       buffer[i] = (COLOR *)malloc(V_SIZE * sizeof(COLOR));
+       buffer[i] = (COLOR *)malloc(v_size * sizeof(COLOR));
       }
 
-  for (i = 0; i < H_SIZE; i++)
+  for (i = 0; i < h_size; i++)
       {
-       for (j = 0; j < V_SIZE; j++){
+       for (j = 0; j < v_size; j++){
 
             buffer[i][j].r = 0;
             buffer[i][j].g = 0;
@@ -80,10 +157,10 @@ void init (){
 void draw (){
 
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-  glutInitWindowSize(H_SIZE,V_SIZE);
+  glutInitWindowSize(h_size,v_size);
   glutCreateWindow("Mesa Example");
   glClear(GL_COLOR_BUFFER_BIT);
-  gluOrtho2D(-0.5, H_SIZE +0.5, -0.5, V_SIZE + 0.5);
+  gluOrtho2D(-0.5, h_size +0.5, -0.5, v_size + 0.5);
   glutDisplayFunc(draw_scene);
   glutMainLoop();
 }
@@ -96,7 +173,7 @@ void draw_scene() {
 
   for (i = 0; i < last_x; i++)
       {
-       for (j = 0; j < V_SIZE; j++)
+       for (j = 0; j < v_size; j++)
            {
             glColor3f (buffer[i][j].r,buffer[i][j].g,buffer[i][j].b);
             glBegin (GL_POINTS);
@@ -105,9 +182,9 @@ void draw_scene() {
            }
       }
 
-  for (i = last_x; i < H_SIZE; i++)
+  for (i = last_x; i < h_size; i++)
       {
-       for (j = 0; j < V_SIZE; j++)
+       for (j = 0; j < v_size; j++)
          {
           glColor3f (buffer[i][j].r,buffer[i][j].g,buffer[i][j].b);
           glBegin(GL_POINTS);
@@ -119,6 +196,22 @@ void draw_scene() {
 
   glFlush();
 }
+
+int random_number(int min_num, int max_num)
+        {
+            int result=0,low_num=0,hi_num=0;
+            if(min_num<max_num)
+            {
+                low_num=min_num;
+                hi_num=max_num+1; // this is done to include max_num in output.
+            }else{
+                low_num=max_num+1;// this is done to include max_num in output.
+                hi_num=min_num;
+            }
+
+            result = (rand()%(hi_num-low_num))+low_num;
+            return result;
+        }
 
 
 

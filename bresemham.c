@@ -1,9 +1,10 @@
 #include "bresemham.h"
 
 
-void algoritmoBresemham  (int X1, int Y1, int X2, int Y2)
+int *algoritmoBresemham(int X1, int Y1, int X2, int Y2)
 
 {
+    clock_t start = clock(), diff;
 
    int e,ax,ay,temp;
    int s1,s2,intercambio,i,x,y;
@@ -28,7 +29,11 @@ void algoritmoBresemham  (int X1, int Y1, int X2, int Y2)
    e=2*ay-ax;
    for(i=1;i<=ax;i++)
    {
+
+
+
       plot((x),(y));
+
       if(e>=0)
       {
          if (intercambio==1)
@@ -51,6 +56,9 @@ void algoritmoBresemham  (int X1, int Y1, int X2, int Y2)
       }
       e=e+2*ay;
    }
+   diff = clock() - start;
+   return diff;
+
 
 }
 
