@@ -7,7 +7,7 @@
  * Archivo:  mesa_example.c
  */
 
-#include "mesa.h"
+#include "MESA2.h"
 #include "malloc.h"
 #include <time.h>
 
@@ -25,9 +25,17 @@ void plotChecker(int i, int j);
 
 int main(int argc, char* argv[])
 {
+    printLabelEncabezado();
     int size =  atoi(argv[1]);
     int times = atoi(argv[2]);
     int lineas = atoi(argv[3]);
+    if (argc == 1){
+        printLabelError1();
+    }
+    else if (argc != 3){
+        printLabelError2();
+        printLabelInfo1();
+    }
 
     printf("Tamaño %i, Repeticiones %i, Lineas %i \n", size, times, lineas);
 
@@ -42,16 +50,24 @@ int main(int argc, char* argv[])
     int IncrementalDobleTime = 0;
     int FuerzaBrutaTime = 0;
     int IncrementalTime = 0;
+    int X1, X2, Y1, Y2, tempTimes;
     while (n++<lineas){
-
-        plotCheckerReset();
-       IncrementalTime += algoritmoIncremental( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
-        plotCheckerReset();
-      //  FuerzaBrutaTime += algoritmoFuerzaBruta( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
-        plotCheckerReset();
-      //  IncrementalDobleTime += algoritmoIncrementalDoble( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
-        plotCheckerReset();
-     //  BresemhamTime += algoritmoBresemham( random_number(0, v_size),random_number(0, v_size),random_number(0, v_size),random_number(0, v_size));
+        X1 = random_number(0, v_size); X2 = random_number(0, v_size); Y1 = random_number(0, v_size); Y2 = random_number(0, v_size);
+        tempTimes = times;
+        while (tempTimes-- >0){
+            plotCheckerReset();
+            printf ("\n Incremental ____________________\n" );
+            IncrementalTime += algoritmoIncremental(X1,X2,Y1,Y2);
+            plotCheckerReset();
+            printf ("\n Fuerza Bruta ____________________\n" );
+            FuerzaBrutaTime += algoritmoFuerzaBruta( X1,X2,Y1,Y2);
+            plotCheckerReset();
+            printf ("\n Doble incremental ____________________\n" );
+            IncrementalDobleTime += algoritmoIncrementalDoble( X1,X2,Y1,Y2);
+            plotCheckerReset();
+            printf ("\nBresemham ____________________\n" );
+            BresemhamTime += algoritmoBresemham( X1,X2,Y1,Y2);
+        }
         }
 
     printf (">> \n" );

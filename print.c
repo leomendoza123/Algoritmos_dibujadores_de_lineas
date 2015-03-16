@@ -9,7 +9,7 @@ void *printLabelEncabezado(){
 	printf("\nLeonardo Mendoza");
 	printf("\n");
 	}
-	
+
 void *printLabelError1(){
 	printf("\nAtencion: No fueron introducidos parametros");
 	printf("\n");
@@ -27,9 +27,8 @@ void *printLabelInfo1(){
 	}
 
 void *printPoint(int X, int Y){
-		printf("x: ");
-		printf("%d",X);
-		printf(" y: ");
-		printf("%d",Y);
-		printf("\n");
+
+		printf("%4d-",X);
+		printf("%4d",Y);
+		printf("//");
 	}

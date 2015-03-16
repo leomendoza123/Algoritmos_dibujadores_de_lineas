@@ -10,7 +10,7 @@ int *algoritmoIncrementalDoble(int X0, int Y0, int X1, int Y1){
 	paso_y = (long double)((long double)(Y1-Y0) / (long double)ancho);
 	x= (long double) X0; y= (long double) Y0;
 	for(i=0;i<=ancho;i++){
-		//printPoint(lroundl(x),lroundl(y));
+		printPoint(lroundl(x),lroundl(y));
 		plot(lroundl(x),lroundl(y));
 		x+=(long double)paso_x;
 		y+=(long double)paso_y;
